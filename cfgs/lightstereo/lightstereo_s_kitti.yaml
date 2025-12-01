@@ -1,12 +1,12 @@
 DATA_CONFIG:
     DATA_INFOS:
-        -   DATASET: KittiDataset
-            DATA_SPLIT: {
-                TRAINING: ./data/KITTI12/kitti12_train194.txt,
-                EVALUATING: '',
-                TESTING: ''
-            }
-            RETURN_RIGHT_DISP: true
+#        -   DATASET: KittiDataset
+#            DATA_SPLIT: {
+#                TRAINING: ./data/KITTI12/kitti12_train194.txt,
+#                EVALUATING: '',
+#                TESTING: ''
+#            }
+#            RETURN_RIGHT_DISP: true
 
         -   DATASET: KittiDataset
             DATA_SPLIT: {
