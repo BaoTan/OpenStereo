@@ -22,6 +22,12 @@ python deploy/export.py --config cfgs/psmnet/psmnet_kitti15.yaml --weights outpu
 python deploy/export.py -h
 ```
 
+**paco**
+
+```bash
+python deploy/export.py --config cfgs/lightstereo/lightstereo_s_kitti.yaml --weights output/LightStereo-S-KITTI.ckpt --device 0 --simplify --half --include onnx
+```
+
 ## 性能评估
 
 我们提供了 `trt_profile.sh` 脚本，用于评估模型在设备上的性能：
@@ -29,6 +35,13 @@ python deploy/export.py -h
 ```bash
 bash deploy/trt_profile.sh --onnx output/KittiDataset/PSMNet/psmnet_kitti15/default/ckpt/checkpoint_epoch_0.onnx --fp16 --verbose
 bash deploy/trt_profile.sh --loadEngine output/KittiDataset/PSMNet/psmnet_kitti15/default/ckpt/checkpoint_epoch_0.engine --fp16 --verbose
+```
+
+**paco**
+
+```bash
+# 需要有trtexec命令
+bash deploy/trt_profile.sh --onnx output/LightStereo-S-KITTI.onnx --fp16 --verbose
 ```
 
 ## C++ 部署示例
