@@ -29,22 +29,24 @@ def main(Provider_Name):
     # ----------------------------------------------
     # 1. 创建 ORT Session（TensorRT EP 优先）
     # ----------------------------------------------
-    providers = ["CPUExecutionProvider"]
+    providers = []
     if Provider_Name == "tensorrt":
         providers = [
-            "TensorrtExecutionProvider",
-            {
-                "trt_engine_cache_enable": True,
-                "trt_engine_cache_path": "./trt_cache/",  # Engine 缓存目录, 启动时ORT会自动将ONNX转为TRT engine, 不需要你手动构建。
-                "trt_fp16_enable": True,  # 开启 FP16, 如果显卡不支持 FP16，它会自动 fallback 到 FP32。
-                "trt_max_workspace_size": 2 * 1024 * 1024 * 1024,  # 2GB
-            }
+            (
+                "TensorrtExecutionProvider",
+                {
+                    "trt_engine_cache_enable": True,
+                    "trt_engine_cache_path": "../output/trt_cache/",  # Engine 缓存目录, 启动时ORT会自动将ONNX转为TRT engine, 不需要你手动构建。
+                    "trt_fp16_enable": True,  # 开启 FP16, 如果显卡不支持 FP16，它会自动 fallback 到 FP32。
+                    "trt_max_workspace_size": 2 * 1024 * 1024 * 1024,  # 2GB
+                }
+            )
         ]
     elif Provider_Name == "cuda":
         providers = [
             "CUDAExecutionProvider",
         ]
-    elif Provider_Name == "cput":
+    elif Provider_Name == "cpu":
         providers = [
             "CPUExecutionProvider"
         ]
@@ -91,13 +93,16 @@ if __name__ == '__main__':
     Provider_Name = "cuda"
     # Provider_Name = "cpu"
     # Provider_Name = "tensorrt"
+
     infer_start = time.time()
     main("cpu")
     time1 = time.time()
     print(f" cpu infer time ms = {(time1 - infer_start) * 1000}")
+
     main("cuda")
     time2 = time.time()
     print(f" cuda infer time ms = {(time2 - time1) * 1000}")
+
     main("tensorrt")
     time3 = time.time()
     print(f" tensorrt infer time ms = {(time3 - time2) * 1000}")
