@@ -4,8 +4,13 @@ import cv2
 import time
 
 ONNX_PATH = "/home/paco/work_prjs/open_prjs/OpenStereo/output/LightStereo-S-KITTI.onnx"
-left_img_path = "/home/paco/work_prjs/open_prjs/OpenStereo/data/HjzlData/361530971.log/images/0/138288560012.png"
-right_img_path = "/home/paco/work_prjs/open_prjs/OpenStereo/data/HjzlData/361530971.log/images/1/138288560012.png"
+# left_img_path = "/home/paco/work_prjs/open_prjs/OpenStereo/data/HjzlData/361530971.log/images/0/138288560012.png"
+# right_img_path = "/home/paco/work_prjs/open_prjs/OpenStereo/data/HjzlData/361530971.log/images/1/138288560012.png"
+
+left_img_path = "/home/paco/work_prjs/open_prjs/OpenStereo/data/KITTI15/training/image_2/000012_10.png"
+right_img_path = "/home/paco/work_prjs/open_prjs/OpenStereo/data/KITTI15/training/image_3/000012_10.png"
+
+
 save_directory = "/home/paco/work_prjs/open_prjs/OpenStereo"
 
 # 相机参数
