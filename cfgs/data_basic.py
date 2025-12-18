@@ -4,7 +4,7 @@ DATA_PATH_DICT = {
     'SceneFlowDataset': '/file_system/vepfs/public_data/SceneFlow',
     'FlyingThings3DSubsetDataset': '/mnt/nas/algorithm/chenming.zhang/dataset/SceneFlow',
     'KittiDataset12': '/file_system/vepfs/public_data/stereo/kitti12',
-    'KittiDataset15': '/home/paco/work_prjs/open_prjs/OpenStereo/data/KITTI15',
+    'KittiDataset15': '/home/paco/work_prjs/open_codes/OpenStereo/data/KITTI15/',
     'DrivingDataset': '/mnt/nas/algorithm/chenming.zhang/dataset/DrivingStereo',
     'MiddleburyDataset': '/file_system/vepfs/public_data/stereo/Middlebury/',
     'ETH3DDataset': '/file_system/vepfs/public_data/stereo/eth3d',

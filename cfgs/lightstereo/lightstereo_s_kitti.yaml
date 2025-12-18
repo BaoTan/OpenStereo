@@ -39,7 +39,7 @@ MODEL:
     LEFT_ATT: true
     FIND_UNUSED_PARAMETERS: false
     CKPT: -1
-    PRETRAINED_MODEL: '/home/paco/work_prjs/open_prjs/OpenStereo/output/LightStereo-S-KITTI.ckpt' # The path of checkpoint trained with the Sceneflow dataset.
+    PRETRAINED_MODEL: './output/LightStereo-S-KITTI.ckpt' # The path of checkpoint trained with the Sceneflow dataset.
 
 OPTIMIZATION:
     FREEZE_BN: false
