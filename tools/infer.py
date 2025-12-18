@@ -21,7 +21,7 @@ def parse_config():
     parser.add_argument('--left_img_path', type=str, default=None)
     parser.add_argument('--right_img_path', type=str, default=None)
     parser.add_argument('--pretrained_model', type=str, default=None, help='pretrained_model')
-    parser.add_argument('--savename', type=str, default=None)
+    parser.add_argument('--savename', type=str, default="infer_disp.png")
 
     args = parser.parse_args()
     yaml_config = common_utils.config_loader(args.cfg_file)

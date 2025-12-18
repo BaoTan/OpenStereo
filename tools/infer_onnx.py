@@ -3,15 +3,15 @@ import numpy as np
 import cv2
 import time
 
-ONNX_PATH = "/home/paco/work_prjs/open_prjs/OpenStereo/output/LightStereo-S-KITTI.onnx"
-# left_img_path = "/home/paco/work_prjs/open_prjs/OpenStereo/data/HjzlData/361530971.log/images/0/138288560012.png"
-# right_img_path = "/home/paco/work_prjs/open_prjs/OpenStereo/data/HjzlData/361530971.log/images/1/138288560012.png"
+ONNX_PATH = "/home/paco/work_prjs/open_codes/OpenStereo/output/LightStereo-S-KITTI.onnx"
+# left_img_path = "/home/paco/work_prjs/open_codes/OpenStereo/data/HjzlData/361530971.log/images/0/138388535815.png"
+# right_img_path = "/home/paco/work_prjs/open_codes/OpenStereo/data/HjzlData/361530971.log/images/1/138388535815.png"
 
-left_img_path = "/home/paco/work_prjs/open_prjs/OpenStereo/data/KITTI15/training/image_2/000012_10.png"
-right_img_path = "/home/paco/work_prjs/open_prjs/OpenStereo/data/KITTI15/training/image_3/000012_10.png"
+left_img_path = "/home/paco/work_prjs/open_codes/OpenStereo/data/KITTI15/training/image_2/000012_10.png"
+right_img_path = "/home/paco/work_prjs/open_codes/OpenStereo/data/KITTI15/training/image_3/000012_10.png"
 
 
-save_directory = "/home/paco/work_prjs/open_prjs/OpenStereo"
+save_directory = "/home/paco/work_prjs/open_codes/OpenStereo"
 
 # 相机参数
 BASELINE = 0.08
@@ -41,7 +41,7 @@ def main(Provider_Name):
                 "TensorrtExecutionProvider",
                 {
                     "trt_engine_cache_enable": True,
-                    "trt_engine_cache_path": "../output/trt_cache/",  # Engine 缓存目录, 启动时ORT会自动将ONNX转为TRT engine, 不需要你手动构建。
+                    "trt_engine_cache_path": "/home/paco/work_prjs/open_codes/OpenStereo/output/trt_cache",  # Engine 缓存目录, 启动时ORT会自动将ONNX转为TRT engine, 不需要你手动构建。
                     "trt_fp16_enable": True,  # 开启 FP16, 如果显卡不支持 FP16，它会自动 fallback 到 FP32。
                     "trt_max_workspace_size": 2 * 1024 * 1024 * 1024,  # 2GB
                 }
@@ -102,12 +102,12 @@ if __name__ == '__main__':
     infer_start = time.time()
     main("cpu")
     time1 = time.time()
-    print(f" cpu infer time ms = {(time1 - infer_start) * 1000}")
+    print(f"cpu infer time ms = {(time1 - infer_start) * 1000}\n")
 
     main("cuda")
     time2 = time.time()
-    print(f" cuda infer time ms = {(time2 - time1) * 1000}")
+    print(f"cuda infer time ms = {(time2 - time1) * 1000}\n")
 
     main("tensorrt")
     time3 = time.time()
-    print(f" tensorrt infer time ms = {(time3 - time2) * 1000}")
+    print(f"tensorrt infer time ms = {(time3 - time2) * 1000}\n")
